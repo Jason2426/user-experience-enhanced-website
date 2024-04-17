@@ -1,0 +1,39 @@
+<%- include('./partials/head') %>
+
+    <link rel="stylesheet" href="/styles/home.css">
+
+    </head>
+
+    <body>
+
+        <%- include('./partials/navbar') %>
+
+            <!-- Trending and latest articles -->
+
+            <main>
+                <% posts.forEach(post=> { %>
+                <article class="">
+                    <a href="/detail/<%= post.slug %>" aria-label="<%- post.title.rendered %>" tabindex="0">
+
+                        <!-- Anchor elements -->
+                        <img src="<%= post.jetpack_featured_media_url %>" class="article-img" alt="">
+                        <h2 class="article-title" tabindex="-1">
+                            <!-- Inner content - heading -->
+                            <%- post.title.rendered %>
+                        </h2>
+                        <section class="article-info" tabindex="-1">
+                            <!-- Inner content - section -->
+                            <p class="author">
+                                <%= post.yoast_head_json.author %>
+                            </p>
+                            <p class="day_data">
+                                <%= new Date(post.date_gmt).getDate() %>/<%= new Date(post.date_gmt).getMonth() %>
+                            </p>
+                        </section>
+                    </a>
+                </article>
+                <% }); %>
+            </main>
+            
+
+    <%- include('./partials/foot') %>

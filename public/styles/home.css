@@ -1,0 +1,179 @@
+@import url('main.css');
+
+
+/* Article styling */
+
+article {
+    background-color: #FFFFFF;
+    margin: 3.5%;
+    border: 1.5px solid black;
+
+}
+
+/* First article styling */
+
+/* Fallback style */
+.article-img {
+    width: auto;
+    height: auto;
+    max-width: none;
+    max-height: none;
+    overflow: hidden;
+}
+
+@supports (object-fit: cover) {
+
+.article-img {
+    width: 100%;
+    object-fit: cover;
+    /* Maintain aspect ratio and crop if necessary */
+}
+
+}
+
+@supports (display: -webkit-box) and (-webkit-box-orient: vertical)
+ and (-webkit-line-clamp: 1) {
+
+.article-title {
+    margin: 4%;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+    line-clamp: 3;
+    overflow: hidden;
+}
+
+}
+
+@supports (display: flex) and (justify-content: space-between) and (padding-top: calc(1%)){
+
+    .article-info {
+        margin: 5% 4% 5% 4%;
+        display: flex;
+        justify-content: space-between;
+        padding-top: calc(5%);
+        border-top: 1px solid rgb(156, 156, 156);
+    
+        .author {
+            font-weight: 800;
+        }
+    
+        .day_data {
+            color: rgb(151, 151, 151);
+        }
+    }
+
+}
+
+/* #region Media queries */
+
+@media (min-width: 31.25em) {
+
+    main {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        margin-top: calc(10% - 7%);
+    }
+
+    article {
+        width: calc(50% - 5%);
+        /* Adjusted width to accommodate margins and borders */
+        margin: 1.25%;
+        /* Reapply margin for larger screens */
+        /* height: 100%; */
+    }
+
+    .article-img {
+        height: 10em;
+        /* Fixed height for image */
+    }
+
+    h2 {
+        font-size: 1.25em;
+    }
+
+    p {
+        font-size: .85em;
+
+        &.author {
+            font-weight: 700;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        &.read-time {
+            color: rgb(111, 111, 111);
+        }
+    }
+}
+
+@media (min-width: 41.5em) {
+
+    .article-img {
+        height: calc(10em + 2em)
+            /* Fixed height for image */
+    }
+}
+
+@media (min-width: 45em) {
+
+    .article-img {
+        height: calc(10em + 4em)
+            /* Fixed height for image */
+    }
+
+    h2 {
+        font-size: calc(1.25em + 0.3em)
+    }
+}
+
+@media (min-width: 56.81em) {
+
+    article {
+        width: calc(50% - 5%);
+        /* Adjusted width to accommodate margins and borders */
+        margin: 1.25%;
+        /* Reapply margin for larger screens */
+        /* height: 100%; */
+    }
+
+    .article-img {
+        height: calc(10em + 10em)
+            /* Fixed height for image */
+    }
+
+    h2 {
+        font-size: calc(1.25em + 0.5em)
+    }
+
+}
+
+@media (min-width: 68.7em) {
+
+
+    main {
+        margin-top: 3%;
+    }
+
+    article {
+        width: calc(30% - 2%);
+        /* Adjusted width to accommodate margins and borders */
+        margin: 1%;
+        /* Reapply margin for larger screens */
+        /* height: 100%; */
+    }
+
+
+    .article-img {
+        height: calc(10em + 6em)
+            /* Fixed height for image */
+    }
+
+    h2 {
+        font-size: calc(1.25em + 0.25em)
+    }
+
+
+}
+
+/* #endregion */
