@@ -97,7 +97,6 @@ app.post('/detail/:slug', (request, response) => {
         .then(({ data }) => {
             // Perform a PATCH request on Directus API to update shares count
             fetchJson(`${sharesURL}/${data[0]?.id ? data[0].id : ''}`, {
-
                 // Determine the HTTP request method based on the existence of data[0].id.
                 // If data[0].id exists, use 'PATCH' method for updating existing resource,
                 // otherwise, use 'POST' method for creating a new resource.

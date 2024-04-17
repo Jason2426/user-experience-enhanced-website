@@ -114,6 +114,7 @@ h2 {
 
     .action-bar {
         margin-top: calc(5%);
+        display: flex;
 
         button {
             display: inline-flex;
@@ -140,7 +141,14 @@ h2 {
             padding: calc(.4em) calc(.4em);
         }
 
+        #likeBtn:hover  {
+            /* Your styles for the hover state of the third button element */
+               border: solid 1px var(--accent-color);
 
+               path {
+                fill: var(--accent-color);
+               }
+            }
     }
 
     .action-bar svg {

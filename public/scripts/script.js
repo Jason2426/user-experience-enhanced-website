@@ -38,3 +38,35 @@ let dateString = currentDate.toLocaleDateString('nl-US', options);
 dateString = dateString.replace(' ', ', ') // Replace the space after the month with a comma and space
 
 currentDateElement.textContent = dateString;
+
+
+/* Client sided like button */
+document.getElementById("likeBtn").addEventListener("click", async () => {
+    // Get the post slug from the server side
+    const postSlug = '<%= post[0].slug %>';
+
+    try {
+        // Send a POST request to the server to like the post
+        const response = await fetch(`/detail/${postSlug}`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ slug: postSlug })
+        });
+
+        // If the response is successful
+        if (response.ok) {
+            // Update the share count displayed on the client side
+            const shareCountElement = document.getElementById("shareCount");
+            shareCountElement.innerText = parseInt(shareCountElement.innerText) + 1;
+        } else {
+            console.error('Error:', response.statusText);
+        }
+    } catch (error) {
+        console.error('Error:', error);
+    }
+});
+
+
+
