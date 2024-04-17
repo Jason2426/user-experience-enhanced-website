@@ -41,9 +41,12 @@ currentDateElement.textContent = dateString;
 
 
 /* Client sided like button */
-document.getElementById("likeBtn").addEventListener("click", async () => {
+document.getElementById("likeBtn").addEventListener("click", async (event) => {
+
+    event.preventDefault();
     // Get the post slug from the server side
     const postSlug = '<%= post[0].slug %>';
+
 
     try {
         // Send a POST request to the server to like the post
