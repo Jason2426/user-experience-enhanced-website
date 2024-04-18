@@ -40,29 +40,42 @@ dateString = dateString.replace(' ', ', ') // Replace the space after the month 
 currentDateElement.textContent = dateString;
 
 
-/* Client sided like button */
-document.getElementById("likeBtn").addEventListener("click", async (event) => {
+/* Client sided like function */
 
+//Add an event listener to the like button
+document.getElementById("likeBtn").addEventListener("click", async(event) => {
+   
     event.preventDefault();
-    // Get the post slug from the server side
-    const postSlug = '<%= post[0].slug %>';
 
+    const likeIcon = document.getElementById('likeIcon');
+
+    // Get the post slug from the hidden input field
+    const postSlugInput = document.querySelector('input[name="slug"]');
+    const postSlug = postSlugInput.value;
 
     try {
         // Send a POST request to the server to like the post
-        const response = await fetch(`/detail/${postSlug}`, {
+        const response = await fetch(`/detail/${postSlug}`, { 
             method: 'POST',
             headers: {
-                'Content-Type': 'application/json'
+                // Setting the request header to specify JSON content
+                'Content-Type': 'application/json' 
             },
-            body: JSON.stringify({ slug: postSlug })
+            // Sending the post slug as JSON in the request body
+            body: JSON.stringify({ slug: postSlug }) 
         });
 
-        // If the response is successful
+        // If the response is successful 
         if (response.ok) {
             // Update the share count displayed on the client side
             const shareCountElement = document.getElementById("shareCount");
-            shareCountElement.innerText = parseInt(shareCountElement.innerText) + 1;
+            // Incrementing the share count displayed on the client side
+            shareCountElement.innerText = parseInt(shareCountElement.innerText) + 1; 
+            //Once the button is clicked disable it
+            likeBtn.disabled = true;
+            likeBtn.style.border = 'solid 1px #E84340';
+            
+
         } else {
             console.error('Error:', response.statusText);
         }
@@ -71,5 +84,16 @@ document.getElementById("likeBtn").addEventListener("click", async (event) => {
     }
 });
 
+/* Text to Speech function */
 
+const luisterBtn = document.querySelector('.listen-btn');
 
+luisterBtn.addEventListener('click', () => {
+    const contentText = document.querySelector('.article-content').textContent;
+    const speechSynthesis = window.speechSynthesis;
+    const speechText = new SpeechSynthesisUtterance(contentText);
+    speechText.lang = 'nl-NL'; // Set language to Dutch (Netherlands)
+    speechText.rate = 0.75; // Adjust the rate to make it slower (0.8 is slower than default)
+    // speechText.volume = 0.75; // Adjust the volume (0.5 is half of maximum volume)
+    speechSynthesis.speak(speechText);
+});
