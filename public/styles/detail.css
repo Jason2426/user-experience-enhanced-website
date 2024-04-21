@@ -135,6 +135,11 @@ h2 {
         .listen-btn {
             padding: calc(.4em) calc(.7em);
             margin-right: calc(2%);
+
+            
+        }
+        .listen-btn:hover {
+            border: solid 1px var(--accent-color);
         }
 
         .like-btn {
@@ -142,7 +147,6 @@ h2 {
         }
 
         #likeBtn:hover {
-            /* Your styles for the hover state of the third button element */
                border: solid 1px var(--accent-color);
 
                path {
@@ -150,22 +154,9 @@ h2 {
                }
         }
 
-        /* #likeBtn:focus {
-            path {
-                fill: blue;
-               }
-        } */
-
         #likeBtn::after {
-
             border: solid 1px var(--accent-color);
-
-            path {
-                fill: var(--accent-color);
-               }
         }
-        
-
     }
 
     .action-bar svg {
@@ -203,10 +194,16 @@ h2 {
 
         .content-excerpt {
             font-family: 'Inter', sans-serif;
+            font-size: 1.2em;
         }
 
         .actual-content {
             margin-top: calc(5%);
+        }
+        .wp-block-heading {
+            font-family: 'Inter', sans-serif;
+            font-size: 1.5em;
+            margin: 2% 0% .5% 0%;
         }
     }
 

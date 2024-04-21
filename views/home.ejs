@@ -16,7 +16,8 @@
                     <a href="/detail/<%= post.slug %>" aria-label="<%- post.title.rendered %>" tabindex="0">
 
                         <!-- Anchor elements -->
-                        <img src="<%= post.jetpack_featured_media_url %>" class="article-img" alt="">
+                        <img src="<%= post.jetpack_featured_media_url %>" class="article-img" alt="<%= post.jetpack_featured_media_alt_text ? 
+                        post.jetpack_featured_media_alt_text : "" %>" loading="lazy" width="auto">
                         <h2 class="article-title" tabindex="-1">
                             <!-- Inner content - heading -->
                             <%- post.title.rendered %>

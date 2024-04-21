@@ -74,6 +74,8 @@ document.getElementById("likeBtn").addEventListener("click", async(event) => {
             //Once the button is clicked disable it
             likeBtn.disabled = true;
             likeBtn.style.border = 'solid 1px #E84340';
+            // Change the SVG fill color
+            likeIcon.querySelector('path').setAttribute('fill', '#E84340');
             
 
         } else {
@@ -92,8 +94,8 @@ luisterBtn.addEventListener('click', () => {
     const contentText = document.querySelector('.article-content').textContent;
     const speechSynthesis = window.speechSynthesis;
     const speechText = new SpeechSynthesisUtterance(contentText);
-    speechText.lang = 'nl-NL'; // Set language to Dutch (Netherlands)
-    speechText.rate = 0.75; // Adjust the rate to make it slower (0.8 is slower than default)
-    // speechText.volume = 0.75; // Adjust the volume (0.5 is half of maximum volume)
+    speechText.lang = 'nl-NL'; // Set language to Dutch
+    speechText.rate = 0.75; // Adjust the rate
+    // speechText.volume = 0.75; // Adjust the volume
     speechSynthesis.speak(speechText);
 });
