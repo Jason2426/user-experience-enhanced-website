@@ -8,9 +8,9 @@
 
         <%- include('./partials/navbar') %>
 
-
             <!-- One post to read -->
             <main>
+                
                 <section class="post">
 
                     <h2 tabindex="0"> <%- post[0].title.rendered %> </h2>
@@ -38,6 +38,7 @@
                         <img src="<%= post[0].jetpack_featured_media_url %>" class="main-article-img" alt="">
                     </section>
 
+                    <!--ACTION BAR-->
                     <section class="action-bar">
                         <button class="share-btn">
                             <svg width="25" height="25" viewBox="0 0 24 24" fill="none"

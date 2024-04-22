@@ -42,7 +42,7 @@ currentDateElement.textContent = dateString;
 
 /* Client sided like function */
 
-//Add an event listener to the like button
+// Add an event listener to the like button
 
     const likeBtn = document.getElementById('likeBtn');
 
@@ -95,6 +95,7 @@ currentDateElement.textContent = dateString;
     console.error("LikeBTN not found ");
 }
 
+
 /* Text to Speech function */
 
 const luisterBtn = document.querySelector('.listen-btn');
@@ -109,3 +110,5 @@ luisterBtn.addEventListener('click', () => {
     speechSynthesis.speak(speechText);
 });
 
+
+/* Loader script */ 

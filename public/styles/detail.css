@@ -236,7 +236,6 @@ h2 {
 
     }
 
-
     .action-bar {
         margin-top: calc(5%);
 
@@ -262,7 +261,6 @@ h2 {
         .author-img {
             max-width: calc(17% - 3%);
         }
-
     }
 
     .main-img {
@@ -317,8 +315,6 @@ h2 {
 
         .metatext {
             font-size: calc(1em + .15em);
-
-            .author {}
         }
     }
 
@@ -362,5 +358,6 @@ h2 {
         transform: scale(1);
     }
 }
+
 
 /* #endregion */ 
