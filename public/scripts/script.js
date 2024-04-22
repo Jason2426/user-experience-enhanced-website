@@ -43,8 +43,14 @@ currentDateElement.textContent = dateString;
 /* Client sided like function */
 
 //Add an event listener to the like button
-document.getElementById("likeBtn").addEventListener("click", async(event) => {
-   
+
+    const likeBtn = document.getElementById('likeBtn');
+
+    // If the likeBtn is found and excsisting execute the following code. Else display error.
+    if (likeBtn) {
+    
+    likeBtn.addEventListener("click", async (event) => {
+
     event.preventDefault();
 
     const likeIcon = document.getElementById('likeIcon');
@@ -85,6 +91,9 @@ document.getElementById("likeBtn").addEventListener("click", async(event) => {
         console.error('Error:', error);
     }
 });
+} else {
+    console.error("LikeBTN not found ");
+}
 
 /* Text to Speech function */
 
@@ -99,3 +108,4 @@ luisterBtn.addEventListener('click', () => {
     // speechText.volume = 0.75; // Adjust the volume
     speechSynthesis.speak(speechText);
 });
+
