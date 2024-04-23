@@ -137,7 +137,7 @@ h2 {
             
         }
         .listen-btn:hover {
-            border: solid 1px var(--accent-color);
+            border: solid 1px var(--accent-color, red);
         }
 
         .like-btn {
@@ -145,15 +145,15 @@ h2 {
         }
 
         #likeBtn:hover {
-               border: solid 1px var(--accent-color);
+               border: solid 1px var(--accent-color, red);
 
                path {
-                fill: var(--accent-color);
+                fill: var(--accent-color, red);
                }
         }
 
         #likeBtn::after {
-            border: solid 1px var(--accent-color);
+            border: solid 1px var(--accent-color, red);
         }
     }
 
