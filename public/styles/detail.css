@@ -1,13 +1,13 @@
-
-
 * {
     margin: 0;
     padding: 0;
 }
 
 main {
+    --default-margin : 5%;
+    --large-margin : 10%;
     align-items: center;
-    margin: 5%;
+    margin: var(--default-margin);
     margin-top: clamp(3rem, 2.5vw, 2rem);
 }
 
@@ -25,8 +25,9 @@ main {
 }
 
 h2 {
-    padding-left: 20px;
-    padding-right: 20px;
+    --h2-padding: 20px;
+    padding-left: var(--h2-padding);
+    padding-right: var(--h2-padding);
 }
 
 @supports (font-size: clamp(0px, 0px, 0px)) and (padding-inline: calc(1% + .1em)) {
@@ -55,9 +56,10 @@ h2 {
         border-bottom: solid 1px #D5D5D5;
 
         .author-img {
+            --author-img-size : 20%;
             padding-right: calc(1em);
-            max-width: 20%;
-            max-height: 20%;
+            max-width: var(--author-img-size);
+            max-height: var(--author-img-size);
             cursor: pointer;
         }
 
@@ -111,7 +113,7 @@ h2 {
 @supports (margin: calc(1%)) and (display: inline-flex) and (border-radius: 2em) {
 
     .action-bar {
-        margin-top: calc(5%);
+        margin-top: calc(var(--default-margin));
         display: flex;
 
         button {
@@ -168,7 +170,7 @@ h2 {
 
 @supports (margin: calc(1%)) and (border-top: solid 1px) and (border-bottom: solid 1px) {
     .est-read-time {
-        margin-top: calc(5%);
+        margin-top: calc(var(--default-margin));
 
         .read-time {
             font-family: 'Inter', sans-serif;
@@ -188,7 +190,7 @@ h2 {
 @supports (margin: calc(1%)) and (object-fit: cover) {
 
     .article-content {
-        margin-top: calc(5%);
+        margin-top: calc(var(--default-margin));
 
         .content-excerpt {
             font-family: 'Inter', sans-serif;
@@ -196,7 +198,7 @@ h2 {
         }
 
         .actual-content {
-            margin-top: calc(5%);
+            margin-top: calc(var(--default-margin));
         }
         .wp-block-heading {
             font-family: 'Inter', sans-serif;
@@ -207,7 +209,6 @@ h2 {
 
     img {
         max-width: 100%;
-        /* images in articles */
         object-fit: cover;
     }
 }
@@ -221,7 +222,7 @@ h2 {
 @media (min-width: 37.5em) {
 
     main {
-        margin: calc(5% + 5%);
+        margin: calc(var(--default-margin) + 5%);
     }
 
     .metadata {
@@ -235,12 +236,12 @@ h2 {
     }
 
     .action-bar {
-        margin-top: calc(5%);
+        margin-top: calc(var(--default-margin));
 
     }
 
     .est-read-time {
-        margin-top: calc(5%);
+        margin-top: calc(var(--default-margin));
     }
 
 }
@@ -254,7 +255,7 @@ h2 {
 
     .metadata {
         margin-top: calc(10% - 2.5%);
-        padding: calc(5% - 2.5%);
+        padding: calc(var(--default-margin) - 2.5%);
 
         .author-img {
             max-width: calc(17% - 3%);
@@ -263,22 +264,22 @@ h2 {
 
     .main-img {
         margin-top: calc(10% - 2.5%);
-        height: 50%;
     }
 
     .action-bar {
-        margin-top: calc(5% - 2.5%);
+        margin-top: calc(var(--default-margin) - 2.5%);
     }
 
     .est-read-time {
-        margin-top: calc(5% - 1.5%);
+        margin-top: calc(var(--default-margin) - 1.5%);
     }
 
 }
 
 @media (min-width: 60em) {
+
     main {
-        margin: calc(10% + 5%);
+        margin: calc(10% + var(--default-margin));
         margin-top: calc(7.5%);
     }
 
@@ -294,8 +295,8 @@ h2 {
 @media (min-width: 68em) {
 
     main {
-        margin: calc(10% + 10%);
-        margin-top: calc(5%);
+        margin: calc(--large-margin + 10%);
+        margin-top: calc(var(--default-margin));
     }
 
     h2 {
@@ -305,7 +306,7 @@ h2 {
 
     .metadata {
 
-        padding: calc(5% - 3.5%);
+        padding: calc(var(--default-margin) - 3.5%);
 
         .author-img {
             max-width: calc(11.5% - 1.5%);
