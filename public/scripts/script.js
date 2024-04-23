@@ -109,6 +109,3 @@ luisterBtn.addEventListener('click', () => {
     // speechText.volume = 0.75; // Adjust the volume
     speechSynthesis.speak(speechText);
 });
-
-
-/* Loader script */ 

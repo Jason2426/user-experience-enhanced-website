@@ -13,22 +13,16 @@
 /* #endregion */
 
 
-
 :root {
-    /* Huisstijl kleuren */
-
+    /* Global colors */
     --main-bg-color: #F7F7F5;
     --secondary-bg-color: #FFFFFF;
     --text-color: #000000;
     --accent-color: #E84340;
-
-    /* New Accent colors */
-
     --secondary-accent-color: #F2D930;
     --tertiary-accent-color: #5340E8;
 
-    /* Fonts */
-
+    /* Global fonts */
     --medium-text: 'Tiempos-Headline-Medium', sans serif;
     --regular-text: 'Tiempos-Headline-Regular', sans serif;
     --content-text: 'Inter', sans serif;
@@ -42,18 +36,10 @@
     box-sizing: border-box;
 }
 
-/* Fallback style */
 body {
-    background-color: #F7F7F5;
+    background-color: var(--_main-bg-color);
 }
 
-@supports (--main-bg-color : #F7F7F5) and (--text-color: #000000) {
-
-    body {
-        background-color: var(--main-bg-color);
-        color: var(--text-color);
-    }
-}
 
 /* Fallback style */
 a {
