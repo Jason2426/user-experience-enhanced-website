@@ -114,27 +114,5 @@ luisterBtn.addEventListener('click', () => {
     console.error("luisterBtn not found.");
 }
 
-const luisterBtn = document.querySelector('.listen-btn');
-
-if (luisterBtn) {
-    luisterBtn.addEventListener('click', () => {
-        const contentText = document.querySelector('.article-content');
-        
-        // Change the styling of the article content once the button is clicked
-        luisterBtn.style.border = 'solid 1px green';
-        // Add more styling changes as needed
-
-        // Speech synthesis code remains unchanged
-        const speechSynthesis = window.speechSynthesis;
-        const speechText = new SpeechSynthesisUtterance(contentText.textContent);
-        speechText.lang = 'nl-NL';
-        speechText.rate = 0.75;
-        // speechText.volume = 0.75; 
-        speechSynthesis.speak(speechText);
-    });
-} else {
-    console.error("luisterBtn not found.");
-}
-
 
 
