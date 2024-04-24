@@ -35,9 +35,10 @@ const currentDate = new Date();
 const options = { weekday: 'long', month: 'long', day: 'numeric', year: 'numeric' };
 
 let dateString = currentDate.toLocaleDateString('nl-US', options);
-dateString = dateString.replace(' ', ', ') // Replace the space after the month with a comma and space
+dateString = dateString.replace(' ', ', ') 
 
 currentDateElement.textContent = dateString;
+
 
 
 /* Client sided like function */
@@ -83,7 +84,6 @@ if (likeBtn) {
                 // Change the SVG fill color
                 likeIcon.querySelector('path').setAttribute('fill', '#E84340');
 
-
             } else {
                 console.error('Error:', response.statusText);
             }
@@ -92,7 +92,7 @@ if (likeBtn) {
         }
     });
 } else {
-    console.error("LikeBTN not found ");
+    console.error("LikeBtn not found.");
 }
 
 
@@ -100,12 +100,41 @@ if (likeBtn) {
 
 const luisterBtn = document.querySelector('.listen-btn');
 
+if (luisterBtn) {
 luisterBtn.addEventListener('click', () => {
     const contentText = document.querySelector('.article-content').textContent;
     const speechSynthesis = window.speechSynthesis;
     const speechText = new SpeechSynthesisUtterance(contentText);
-    speechText.lang = 'nl-NL'; // Set language to Dutch
-    speechText.rate = 0.75; // Adjust the rate
-    // speechText.volume = 0.75; // Adjust the volume
+    speechText.lang = 'nl-NL';
+    speechText.rate = 0.75;
+    // speechText.volume = 0.75; 
     speechSynthesis.speak(speechText);
 });
+} else {
+    console.error("luisterBtn not found.");
+}
+
+const luisterBtn = document.querySelector('.listen-btn');
+
+if (luisterBtn) {
+    luisterBtn.addEventListener('click', () => {
+        const contentText = document.querySelector('.article-content');
+        
+        // Change the styling of the article content once the button is clicked
+        luisterBtn.style.border = 'solid 1px green';
+        // Add more styling changes as needed
+
+        // Speech synthesis code remains unchanged
+        const speechSynthesis = window.speechSynthesis;
+        const speechText = new SpeechSynthesisUtterance(contentText.textContent);
+        speechText.lang = 'nl-NL';
+        speechText.rate = 0.75;
+        // speechText.volume = 0.75; 
+        speechSynthesis.speak(speechText);
+    });
+} else {
+    console.error("luisterBtn not found.");
+}
+
+
+

@@ -48,9 +48,10 @@ h2 {
 @supports (display: flex) and (justify-content: center) and (margin: calc(0%)) {
 
     .metadata {
+        --large-margin: 10%;
         display: flex;
         justify-content: center;
-        margin-top: calc(--large-margin);
+        margin-top: var(--large-margin);
         padding: 5% 0% 5% 0%;
         border-top: solid 1px #D5D5D5;
         border-bottom: solid 1px #D5D5D5;
@@ -95,7 +96,7 @@ h2 {
 @supports (object-fit: cover) and (margin-top: calc(1%)) {
 
     .main-img {
-        margin-top: calc(10%);
+        margin-top: var(--large-margin);
         width: 100%;
 
         .main-article-img {
@@ -187,14 +188,13 @@ h2 {
 
 /* #region Article Content */
 
-@supports (margin: calc(1%)) and (object-fit: cover) {
-
     .article-content {
         margin-top: calc(var(--default-margin));
 
         .content-excerpt {
+            --excerpt-size: 1.2em;
             font-family: 'Inter', sans-serif;
-            font-size: 1.2em;
+            font-size: var(--excerpt-size);
         }
 
         .actual-content {
@@ -202,7 +202,7 @@ h2 {
         }
         .wp-block-heading {
             font-family: 'Inter', sans-serif;
-            font-size: 1.5em;
+            font-size: calc(var(--excerpt-size) + .3em);
             margin: 2% 0% .5% 0%;
         }
     }
@@ -211,7 +211,6 @@ h2 {
         max-width: 100%;
         object-fit: cover;
     }
-}
 
 /* #endregion */
 
@@ -254,7 +253,7 @@ h2 {
     }
 
     .metadata {
-        margin-top: calc(10% - 2.5%);
+        margin-top: calc(var(--large-margin) - 2.5%);
         padding: calc(var(--default-margin) - 2.5%);
 
         .author-img {
@@ -263,7 +262,7 @@ h2 {
     }
 
     .main-img {
-        margin-top: calc(10% - 2.5%);
+        margin-top: calc(var(--large-margin) - 2.5%);
     }
 
     .action-bar {
@@ -279,7 +278,7 @@ h2 {
 @media (min-width: 60em) {
 
     main {
-        margin: calc(10% + var(--default-margin));
+        margin: calc(var(--large-margin) + var(--default-margin));
         margin-top: calc(7.5%);
     }
 
@@ -295,7 +294,7 @@ h2 {
 @media (min-width: 68em) {
 
     main {
-        margin: calc(--large-margin + 10%);
+        margin: calc(var(--large-margin) + var(--large-margin));
         margin-top: calc(var(--default-margin));
     }
 

@@ -17,11 +17,11 @@
                     <h2 tabindex="0"> <%- post[0].title.rendered %> </h2>
 
                     <section class="metadata">
-                        <img src="<% if (post[0].avatar /* auteurs hebben nog geen foto maar misschien voor later */) { %>
-                            <%= post[0].avatar  %>
-                          <% } else { %>
-                            /images/author.png
-                      <% } %>" alt="Foto van auteur" class="author-img" loading="lazy">
+                            <img src="<% if (post[0].avatar /* auteurs hebben nog geen foto maar misschien voor later */) { %>
+                                <%= post[0].avatar  %>
+                                <% } else { %>
+                                /images/author.png
+                            <% } %>" alt="Foto van auteur" class="author-img" loading="lazy">
                         <div class="metatext">
                             <p class="author">
                                 <%= post[0].yoast_head_json.author %>
