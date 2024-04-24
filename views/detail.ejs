@@ -1,7 +1,7 @@
-<%- include('./partials/head' , { title: post[0].title.rendered }) %>
+<%- include('./partials/head' , { title: post[0].title.rendered, stylesheet: 'main' }) %>
 
-    <link rel="stylesheet" href="/styles/main.css">
     <link rel="stylesheet" href="/styles/detail.css">
+    <link rel="stylesheet" href="/styles/main.css">
 
     </head>
 
@@ -20,7 +20,7 @@
                         <img src="<% if (post[0].avatar /* auteurs hebben nog geen foto maar misschien voor later */) { %>
                             <%= post[0].avatar  %>
                           <% } else { %>
-                            /images/profile-placeholder.webp
+                            /images/author.png
                       <% } %>" alt="Foto van auteur" class="author-img" loading="lazy">
                         <div class="metatext">
                             <p class="author">

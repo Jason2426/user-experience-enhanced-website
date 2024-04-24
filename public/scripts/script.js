@@ -44,53 +44,53 @@ currentDateElement.textContent = dateString;
 
 // Add an event listener to the like button
 
-    const likeBtn = document.getElementById('likeBtn');
+const likeBtn = document.getElementById('likeBtn');
 
-    // If the likeBtn is found and excsisting execute the following code. Else display error.
-    if (likeBtn) {
-    
+// If the likeBtn is found and excsisting execute the following code. Else display error.
+if (likeBtn) {
+
     likeBtn.addEventListener("click", async (event) => {
 
-    event.preventDefault();
+        event.preventDefault();
 
-    const likeIcon = document.getElementById('likeIcon');
+        const likeIcon = document.getElementById('likeIcon');
 
-    // Get the post slug from the hidden input field
-    const postSlugInput = document.querySelector('input[name="slug"]');
-    const postSlug = postSlugInput.value;
+        // Get the post slug from the hidden input field
+        const postSlugInput = document.querySelector('input[name="slug"]');
+        const postSlug = postSlugInput.value;
 
-    try {
-        // Send a POST request to the server to like the post
-        const response = await fetch(`/detail/${postSlug}`, { 
-            method: 'POST',
-            headers: {
-                // Setting the request header to specify JSON content
-                'Content-Type': 'application/json' 
-            },
-            // Sending the post slug as JSON in the request body
-            body: JSON.stringify({ slug: postSlug }) 
-        });
+        try {
+            // Send a POST request to the server to like the post
+            const response = await fetch(`/detail/${postSlug}`, {
+                method: 'POST',
+                headers: {
+                    // Setting the request header to specify JSON content
+                    'Content-Type': 'application/json'
+                },
+                // Sending the post slug as JSON in the request body
+                body: JSON.stringify({ slug: postSlug })
+            });
 
-        // If the response is successful 
-        if (response.ok) {
-            // Update the share count displayed on the client side
-            const shareCountElement = document.getElementById("shareCount");
-            // Incrementing the share count displayed on the client side
-            shareCountElement.innerText = parseInt(shareCountElement.innerText) + 1; 
-            //Once the button is clicked disable it
-            likeBtn.disabled = true;
-            likeBtn.style.border = 'solid 1px #E84340';
-            // Change the SVG fill color
-            likeIcon.querySelector('path').setAttribute('fill', '#E84340');
-            
+            // If the response is successful 
+            if (response.ok) {
+                // Update the share count displayed on the client side
+                const shareCountElement = document.getElementById("shareCount");
+                // Incrementing the share count displayed on the client side
+                shareCountElement.innerText = parseInt(shareCountElement.innerText) + 1;
+                //Once the button is clicked disable it
+                likeBtn.disabled = true;
+                likeBtn.style.border = 'solid 1px #E84340';
+                // Change the SVG fill color
+                likeIcon.querySelector('path').setAttribute('fill', '#E84340');
 
-        } else {
-            console.error('Error:', response.statusText);
+
+            } else {
+                console.error('Error:', response.statusText);
+            }
+        } catch (error) {
+            console.error('Error:', error);
         }
-    } catch (error) {
-        console.error('Error:', error);
-    }
-});
+    });
 } else {
     console.error("LikeBTN not found ");
 }
