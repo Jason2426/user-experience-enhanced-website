@@ -1,7 +1,4 @@
-* {
-    margin: 0;
-    padding: 0;
-}
+/* Detailpage styling goodluck */
 
 main {
     --default-margin : 5%;
@@ -30,13 +27,11 @@ h2 {
     padding-right: var(--h2-padding);
 }
 
-@supports (font-size: clamp(0px, 0px, 0px)) and (padding-inline: calc(1% + .1em)) {
-    h2 {
+h2 {
         text-align: center;
         font-size: clamp(2em, 4rem, 3vw);
         /* For responsiveness */
         padding-inline: calc(2% + .3em);
-    }
 }
 
 /* #region Metadata */
@@ -45,7 +40,7 @@ h2 {
     display: block;
 }
 
-@supports (display: flex) and (justify-content: center) and (margin: calc(0%)) {
+@supports (display: flex) {
 
     .metadata {
         --large-margin: 10%;
@@ -93,7 +88,6 @@ h2 {
 
 /* #region Main Image */
 
-@supports (object-fit: cover) and (margin-top: calc(1%)) {
 
     .main-img {
         margin-top: var(--large-margin);
@@ -105,13 +99,12 @@ h2 {
             border: solid 1px black;
         }
     }
-}
 
 /* #endregion Main Image */
 
 /* #region Action Bar styling */
 
-@supports (margin: calc(1%)) and (display: inline-flex) and (border-radius: 2em) {
+@supports (display: inline-flex){
 
     .action-bar {
         margin-top: calc(var(--default-margin));
@@ -169,7 +162,6 @@ h2 {
 
 /* #region EST-READ-TIME */
 
-@supports (margin: calc(1%)) and (border-top: solid 1px) and (border-bottom: solid 1px) {
     .est-read-time {
         margin-top: calc(var(--default-margin));
 
@@ -182,7 +174,6 @@ h2 {
             padding: 1em 0 1em 0;
         }
     }
-}
 
 /* #endregion */
 
@@ -226,7 +217,6 @@ h2 {
 
     .metadata {
         padding: calc(5% - 2%);
-
 
         .author-img {
             max-width: 17%;

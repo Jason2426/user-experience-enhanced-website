@@ -1,11 +1,12 @@
+/* Homepage styling goodluck */
 
-/* Article styling */
+
+/* #region Article styling */
 
 article {
     background-color: #FFFFFF;
     margin: 3.5%;
     border: 1.5px solid black;
-
 }
 
 /* First article styling */
@@ -43,13 +44,13 @@ article {
 
 }
 
-@supports (display: flex) and (justify-content: space-between) and (padding-top: calc(1%)){
+@supports (display: flex){
 
     .article-info {
         margin: 5% 4% 5% 4%;
         display: flex;
         justify-content: space-between;
-        padding-top: calc(5%);
+        padding-top: 5%;
         border-top: 1px solid rgb(156, 156, 156);
     
         .author {
@@ -62,6 +63,8 @@ article {
     }
 
 }
+
+/* #endregion */ 
 
 /* #region Media queries */
 
@@ -76,16 +79,9 @@ article {
 
     article {
         width: calc(50% - 5%);
-        /* Adjusted width to accommodate margins and borders */
         margin: 1.25%;
-        /* Reapply margin for larger screens */
-        /* height: 100%; */
     }
 
-    .article-img {
-        height: 10em;
-        /* Fixed height for image */
-    }
 
     h2 {
         font-size: 1.25em;
@@ -108,20 +104,19 @@ article {
 @media (min-width: 41.5em) {
 
     .article-img {
-        height: calc(10em + 2em)
-            /* Fixed height for image */
+        height: calc(10em + 2em);
     }
 }
 
 @media (min-width: 45em) {
 
     .article-img {
-        height: calc(10em + 4em)
+        height: calc(10em + 4em);
             /* Fixed height for image */
     }
 
     h2 {
-        font-size: calc(1.25em + 0.3em)
+        font-size: calc(1.25em + 0.3em);
     }
 }
 
@@ -129,19 +124,15 @@ article {
 
     article {
         width: calc(50% - 5%);
-        /* Adjusted width to accommodate margins and borders */
         margin: 1.25%;
-        /* Reapply margin for larger screens */
-        /* height: 100%; */
     }
 
     .article-img {
-        height: calc(10em + 10em)
-            /* Fixed height for image */
+        height: calc(10em + 10em);
     }
 
     h2 {
-        font-size: calc(1.25em + 0.5em)
+        font-size: calc(1.25em + 0.5em);
     }
 
 }
@@ -155,16 +146,12 @@ article {
 
     article {
         width: calc(30% - 2%);
-        /* Adjusted width to accommodate margins and borders */
         margin: 1%;
-        /* Reapply margin for larger screens */
-        /* height: 100%; */
     }
 
 
     .article-img {
         height: calc(10em + 6em)
-            /* Fixed height for image */
     }
 
     h2 {
