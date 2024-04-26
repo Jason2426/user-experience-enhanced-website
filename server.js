@@ -4,12 +4,6 @@ import express from 'express'
 // Import the fetchJson function from the ./helpers directory
 import fetchJson from './helpers/fetch-json.js';
 
-// Set the basis endpoint
-const apiUrl = 'https://redpers.nl/wp-json/wp/v2';
-const redpers_post_url = 'https://redpers.nl/wp-json/wp/v2/posts'
-const redpers_categories_url = 'https://redpers.nl/wp-json/wp/v2/categories'
-const directus_url = 'https://fdnd-agency.directus.app/items/redpers_shares'
-
 // Create a new express app
 const app = express();
 
@@ -25,12 +19,17 @@ app.set('views', './views');
 // Use the 'public' directory for static resources
 app.use(express.static('public'));
 
+// Set the basis endpoint
+const apiUrl = 'https://redpers.nl/wp-json/wp/v2';
+const redpers_post_url = 'https://redpers.nl/wp-json/wp/v2/posts'
+const redpers_categories_url = 'https://redpers.nl/wp-json/wp/v2/categories'
+const directus_url = 'https://fdnd-agency.directus.app/items/redpers_shares'
+
 // Fetch posts from the API
 const postsURL = `${apiUrl}/posts?per_page=27`;
 const allpostsURL = `${apiUrl}/posts?per_page=100`;
 const onePostURL = `${apiUrl}/posts?slug=`;
 const categoriesURL = `${apiUrl}/categories?per_page=27`;
-
 const sharesURL = `${directus_url}`; 
 
 
@@ -47,8 +46,6 @@ app.get('/', function (request, response) {
             });
             // Render index.ejs and pass the fetched data as 'posts' and 'categories' variables
             response.render('home', { categories: categoriesData, posts: postsData });
-            //Check if the sharesData has info
-            // console.log(sharesData);
         })
         .catch((error) => {
             // Handle error if fetching data fails
@@ -61,8 +58,8 @@ app.get('/', function (request, response) {
 
 app.get('/detail/:slug', function (request, response) {
     // Fetch posts concurrently
-    const postSlug = request.params.slug;
-    Promise.all([fetchJson(`${onePostURL} + ${postSlug}`)])
+    // const postSlug = request.params.slug;
+    Promise.all([fetchJson(`${onePostURL} + ${request.params.slug}`)])
         .then(([onePostData]) => {
             // Fetch JSON data from the specified URL, filtering by post slug.
             fetchJson(`${sharesURL}?filter[slug][_eq]=${postSlug}`)
