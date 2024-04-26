@@ -1,13 +1,14 @@
+/* Try to switch between classe instead of changing style in JS */ 
+
 /* Hamburger menu code*/
 
 document.addEventListener("DOMContentLoaded", function () {
 
-    const menuIcon = document.querySelector('.menu_icon');
-    if (menuIcon) {
+        const menuIcon = document.querySelector('.menu_icon');
         const burgerMenu = document.querySelector('.burger_menu_window');
         const closeIcon = document.querySelector('.close_icon');
 
-        menuIcon.addEventListener('click', function () {
+        menuIcon?.addEventListener('click', function () {
             // Change translate position of menu icon
             menuIcon.style.transform = 'translateX(-200%)';
             // Show burger menu
@@ -25,8 +26,7 @@ document.addEventListener("DOMContentLoaded", function () {
             menuIcon.hidden = false;
         });
 
-    }
-});
+    });
 
 /* Current day and month code */
 
@@ -36,9 +36,7 @@ const options = { weekday: 'long', month: 'long', day: 'numeric', year: 'numeric
 
 let dateString = currentDate.toLocaleDateString('nl-US', options);
 dateString = dateString.replace(' ', ', ') 
-
 currentDateElement.textContent = dateString;
-
 
 
 /* Client sided like function */
@@ -46,30 +44,25 @@ currentDateElement.textContent = dateString;
 // Add an event listener to the like button
 
 const likeBtn = document.getElementById('likeBtn');
+const likeIcon = document.getElementById('likeIcon');
+const postSlugInput = document.querySelector('input[name="slug"]');
+const postSlug = postSlugInput.value;
 
 // If the likeBtn is found and excsisting execute the following code. Else display error.
-if (likeBtn) {
 
-    likeBtn.addEventListener("click", async (event) => {
+    likeBtn?.addEventListener("click", async (event) => {
 
-        event.preventDefault();
+            event.preventDefault();
 
-        const likeIcon = document.getElementById('likeIcon');
-
-        // Get the post slug from the hidden input field
-        const postSlugInput = document.querySelector('input[name="slug"]');
-        const postSlug = postSlugInput.value;
-
-        try {
             // Send a POST request to the server to like the post
-            const response = await fetch(`/detail/${postSlug}`, {
+            const response = await fetch(`/detail/${postSlugInput.value}`, {
                 method: 'POST',
                 headers: {
                     // Setting the request header to specify JSON content
                     'Content-Type': 'application/json'
                 },
                 // Sending the post slug as JSON in the request body
-                body: JSON.stringify({ slug: postSlug })
+                body: JSON.stringify({ slug: postSlugInput.value })
             });
 
             // If the response is successful 
@@ -87,21 +80,14 @@ if (likeBtn) {
             } else {
                 console.error('Error:', response.statusText);
             }
-        } catch (error) {
-            console.error('Error:', error);
-        }
     });
-} else {
-    console.error("LikeBtn not found.");
-}
 
 
 /* Text to Speech function */
 
 const luisterBtn = document.querySelector('.listen-btn');
 
-if (luisterBtn) {
-luisterBtn.addEventListener('click', () => {
+luisterBtn?.addEventListener('click', () => {
     const contentText = document.querySelector('.article-content').textContent;
     const speechSynthesis = window.speechSynthesis;
     const speechText = new SpeechSynthesisUtterance(contentText);
@@ -110,9 +96,7 @@ luisterBtn.addEventListener('click', () => {
     // speechText.volume = 0.75; 
     speechSynthesis.speak(speechText);
 });
-} else {
-    console.error("luisterBtn not found.");
-}
+
 
 
 

@@ -1,0 +1,35 @@
+
+/* Tips */ 
+
+- Variables bij elkaar zetten en pas na de imports. [x]
+
+- Alle roots eerst definieren. [x]
+
+- regel 64 , 65 onnodig om variable weer aan te maken. Reques.params.slug in de plaats van ${postSlug}.[x]
+
+- Regel 53 likeBtn?.addEventListener.[x]
+
+- likeIcon en andere variablen buiten de functie declareren.  [x]
+
+- Een aanroep per promise.all, misschien graphQ. 
+
+- Eventueel map en of filter gebruiken in de plaats van forEach. []
+
+- Eerste twee images normaal en de rest op lazy loading.[]
+
+- Regel 76 onnodige catches weghalen []
+
+- Script js functies eventueel opsplitsen.
+
+- 53 async hoef ik niet te gebruiken.
+
+
+- Clean code schrijven. 
+
+/ Tip van Justsus maak steeds kleine stapjes en probeer of het dan werkt. Dat is de beste manier om betere code te schrijven / 
+
+Cool dat je een promise al gebruikt. Je kan hier de diepte in de duiken en verder gaan, maar dat hoeft niet. Je snapt de code die je geschreven hebt en kan deze ook uitleggen als het gevraagd wordt, op bepaalde dingen zoals de catch:error's moet je nog naar kijken, ook op de manier waar je jouw variable schrijft. 
+
+Kies 1 van de manieren van code schrijven en pas die constitent toe. Je schrijft dezelfde code in andere documenten op een andere manier.
+
+Alles heeft te maken met de Clean-Coding, het is nu belangrijk te kijken hoe je zo net mogelijke code kan schrijven. Dat is een volgende slag die je kan maken.

@@ -47,35 +47,27 @@ app.get('/', function (request, response) {
             // Render index.ejs and pass the fetched data as 'posts' and 'categories' variables
             response.render('home', { categories: categoriesData, posts: postsData });
         })
-        .catch((error) => {
-            // Handle error if fetching data fails
-            console.error('Error fetching data:', error);
-            response.status(500).send('Error fetching data');
-        });
 });
 
 
 
 app.get('/detail/:slug', function (request, response) {
-    // Fetch posts concurrently
-    // const postSlug = request.params.slug;
     Promise.all([fetchJson(`${onePostURL} + ${request.params.slug}`)])
         .then(([onePostData]) => {
             // Fetch JSON data from the specified URL, filtering by post slug.
-            fetchJson(`${sharesURL}?filter[slug][_eq]=${postSlug}`)
-            .then(({data}) => {
-                // Assigns the number of shares from the first item in 'data', or 0 if 'data' is empty.
-                const shares = data.length > 0 ? data[0].shares : 0;
+            fetchJson(`${sharesURL}?filter[slug][_eq]=${request.params.slug}`)
+                .then(({data}) => {
+                    // Assigns the number of shares from the first item in 'data', or 0 if 'data' is empty.
+                    const shares = data.length > 0 ? data[0].shares : 0;
 
-                // Render index.ejs and pass the fetched data as 'posts' variables
-                response.render('detail', {post: onePostData, shares});
-            })
-            .catch((error) => {
-                console.error('Error fetching shares data:', error);
-                // Render index.ejs and pass the fetched data as 'posts' 
-                response.render('detail', { post: onePostData, shares: 0 });
-            })
-
+                    // Render index.ejs and pass the fetched data as 'posts' variables
+                    response.render('detail', {post: onePostData, shares});
+                })
+                .catch((error) => {
+                    console.error('Error fetching shares data:', error);
+                    // Render index.ejs and pass the fetched data as 'posts' 
+                    response.render('detail', { post: onePostData, shares: 0 });
+                })
         })
         .catch((error) => {
             // Handle error if fetching data fails
@@ -87,10 +79,9 @@ app.get('/detail/:slug', function (request, response) {
 
 // POST route to increment shares count
 app.post('/detail/:slug', (request, response) => {
-    const postSlug = request.params.slug;
 
     // Fetch shares data for the given post slug
-    fetchJson(`${sharesURL}?filter[slug][_eq]=${postSlug}`)
+    fetchJson(`${sharesURL}?filter[slug][_eq]=${request.params.slug}`)
         .then(({ data }) => {
             // Perform a PATCH request on Directus API to update shares count
             fetchJson(`${sharesURL}/${data[0]?.id ? data[0].id : ''}`, {
@@ -117,18 +108,18 @@ app.post('/detail/:slug', (request, response) => {
             })
             .then((result) => {
                 // Redirect to the article page after updating shares count
-                response.redirect(301, `/detail/${postSlug}`);
+                response.redirect(301, `/detail/${request.params.slug}`);
             })
             .catch((error) => {
                 console.error('Error updating shares count:', error);
                 // Redirect to the article page even if shares count cannot be updated
-                response.redirect(301, `/detail/${postSlug}`);
+                response.redirect(301, `/detail/${request.params.slug}`);
             });
         })
         .catch((error) => {
             console.error('Error fetching shares data:', error);
             // Redirect to the article page if shares data cannot be fetched
-            response.redirect(301, `/detail/${postSlug}`);
+            response.redirect(301, `/detail/${request.params.slug}`);
         });
 });
 
