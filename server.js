@@ -35,16 +35,16 @@ const sharesURL = `${directus_url}`;
 
 // GET route for the index page
 app.get('/', function (request, response) {
-
     // Fetch posts, categories, and shares concurrently
     Promise.all([fetchJson(categoriesURL), fetchJson(postsURL), fetchJson(sharesURL)])
         .then(([categoriesData, postsData, sharesData]) => {
             // Map over the postsData array and add shares information to each article
-            postsData.forEach((article) => {
+           postsData.map((article) => {
                 const shareInfo = sharesData.data.find((share) => share.slug === article.slug);
                 article.shares = shareInfo ? shareInfo.shares : 0;
+                return article;
             });
-            // Render index.ejs and pass the fetched data as 'posts' and 'categories' variables
+            // Render home.ejs and pass the fetched data as 'posts' and 'categories' variables
             response.render('home', { categories: categoriesData, posts: postsData });
         })
 });
@@ -60,7 +60,7 @@ app.get('/detail/:slug', function (request, response) {
                     // Assigns the number of shares from the first item in 'data', or 0 if 'data' is empty.
                     const shares = data.length > 0 ? data[0].shares : 0;
 
-                    // Render index.ejs and pass the fetched data as 'posts' variables
+                    // Render detail.ejs and pass the fetched data as 'posts' variables
                     response.render('detail', {post: onePostData, shares});
                 })
                 .catch((error) => {
@@ -69,17 +69,11 @@ app.get('/detail/:slug', function (request, response) {
                     response.render('detail', { post: onePostData, shares: 0 });
                 })
         })
-        .catch((error) => {
-            // Handle error if fetching data fails
-            console.error('Error fetching data:', error);
-            response.status(500).send('Error fetching data!');
-        });
 });
 
 
 // POST route to increment shares count
 app.post('/detail/:slug', (request, response) => {
-
     // Fetch shares data for the given post slug
     fetchJson(`${sharesURL}?filter[slug][_eq]=${request.params.slug}`)
         .then(({ data }) => {
@@ -89,18 +83,14 @@ app.post('/detail/:slug', (request, response) => {
                 // If data[0].id exists, use 'PATCH' method for updating existing resource,
                 // otherwise, use 'POST' method for creating a new resource.
                 method: data[0]?.id ? 'PATCH' : 'POST',
-
                 // Set the headers for the HTTP request.
                 // The 'Content-Type' header indicates that the content of the request body is in JSON format.
                 headers: { 'Content-Type': 'application/json' },
-
                 // Set the body of the HTTP request by converting a JavaScript object into a JSON string.
                 body: JSON.stringify({
-
-                     // Set the 'slug' property in the request body to the value of the postSlug variable.
-                    slug: postSlug,
-
-                     // Set the 'shares' property in the request body.
+                    // Set the 'slug' property in the request body to the value of the postSlug variable.
+                    slug: request.params.slug,
+                    // Set the 'shares' property in the request body.
                     // If data contains at least one item, increment the 'shares' count by 1,
                     // otherwise, set the 'shares' count to 1.
                     shares: data.length > 0 ? data[0].shares + 1 : 1,
@@ -109,19 +99,10 @@ app.post('/detail/:slug', (request, response) => {
             .then((result) => {
                 // Redirect to the article page after updating shares count
                 response.redirect(301, `/detail/${request.params.slug}`);
-            })
-            .catch((error) => {
-                console.error('Error updating shares count:', error);
-                // Redirect to the article page even if shares count cannot be updated
-                response.redirect(301, `/detail/${request.params.slug}`);
             });
-        })
-        .catch((error) => {
-            console.error('Error fetching shares data:', error);
-            // Redirect to the article page if shares data cannot be fetched
-            response.redirect(301, `/detail/${request.params.slug}`);
         });
 });
+
 
 
 // POST route for the index page
