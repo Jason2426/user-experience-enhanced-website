@@ -59,7 +59,6 @@ app.get('/detail/:slug', function (request, response) {
                 .then(({data}) => {
                     // Assigns the number of shares from the first item in 'data', or 0 if 'data' is empty.
                     const shares = data.length > 0 ? data[0].shares : 0;
-
                     // Render detail.ejs and pass the fetched data as 'posts' variables
                     response.render('detail', {post: onePostData, shares});
                 })
@@ -83,16 +82,10 @@ app.post('/detail/:slug', (request, response) => {
                 // If data[0].id exists, use 'PATCH' method for updating existing resource,
                 // otherwise, use 'POST' method for creating a new resource.
                 method: data[0]?.id ? 'PATCH' : 'POST',
-                // Set the headers for the HTTP request.
-                // The 'Content-Type' header indicates that the content of the request body is in JSON format.
                 headers: { 'Content-Type': 'application/json' },
                 // Set the body of the HTTP request by converting a JavaScript object into a JSON string.
                 body: JSON.stringify({
-                    // Set the 'slug' property in the request body to the value of the postSlug variable.
                     slug: request.params.slug,
-                    // Set the 'shares' property in the request body.
-                    // If data contains at least one item, increment the 'shares' count by 1,
-                    // otherwise, set the 'shares' count to 1.
                     shares: data.length > 0 ? data[0].shares + 1 : 1,
                 }),
             })

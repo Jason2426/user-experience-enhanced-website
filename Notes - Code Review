@@ -13,11 +13,11 @@
 
 - Een aanroep per promise.all, misschien graphQ. 
 
-- Eventueel map en of filter gebruiken in de plaats van forEach. []
+- Eventueel map en of filter gebruiken in de plaats van forEach. [x]
 
 - Eerste twee images normaal en de rest op lazy loading.[]
 
-- Regel 76 onnodige catches weghalen []
+- Regel 76 onnodige catches weghalen [x]
 
 - Script js functies eventueel opsplitsen.
 
