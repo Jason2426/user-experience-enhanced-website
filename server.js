@@ -76,7 +76,6 @@ app.post('/detail/:slug', (request, response) => {
     // Fetch shares data for the given post slug
     fetchJson(`${sharesURL}?filter[slug][_eq]=${request.params.slug}`)
         .then(({ data }) => {
-            // Perform a PATCH request on Directus API to update shares count
             fetchJson(`${sharesURL}/${data[0]?.id ? data[0].id : ''}`, {
                 // Determine the HTTP request method based on the existence of data[0].id.
                 // If data[0].id exists, use 'PATCH' method for updating existing resource,
@@ -95,7 +94,6 @@ app.post('/detail/:slug', (request, response) => {
             });
         });
 });
-
 
 
 // POST route for the index page

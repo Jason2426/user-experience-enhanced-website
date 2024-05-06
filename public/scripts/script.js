@@ -46,7 +46,6 @@ currentDateElement.textContent = dateString;
 const likeBtn = document.getElementById('likeBtn');
 const likeIcon = document.getElementById('likeIcon');
 const postSlugInput = document.querySelector('input[name="slug"]');
-const postSlug = postSlugInput.value;
 
 
     likeBtn?.addEventListener("click", (event) => {
