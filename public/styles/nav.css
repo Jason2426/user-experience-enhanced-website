@@ -147,9 +147,8 @@ li:hover {
         border: none;
         background: inherit;
 
-        /* Apply animation on hover */
         &:hover svg {
-            animation: swing 0.5s ease-in-out;
+            animation: swing 0.5s;
             /* Apply swing animation on hover */
         }
     }
