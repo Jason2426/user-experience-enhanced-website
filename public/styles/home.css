@@ -68,7 +68,7 @@ article {
 
 /* #region Media queries */
 
-@media (min-width: 31.25em) {
+@media (width >= 500px) {
 
     main {
         display: flex;
@@ -101,14 +101,14 @@ article {
     }
 }
 
-@media (min-width: 41.5em) {
+@media (width >= 664px) {
 
     .article-img {
         height: calc(10em + 2em);
     }
 }
 
-@media (min-width: 45em) {
+@media (width >= 720px) {
 
     .article-img {
         height: calc(10em + 4em);
@@ -120,7 +120,7 @@ article {
     }
 }
 
-@media (min-width: 56.81em) {
+@media (width >= 908px) {
 
     article {
         width: calc(50% - 5%);
@@ -137,7 +137,7 @@ article {
 
 }
 
-@media (min-width: 68.7em) {
+@media (width >= 1099px) {
 
 
     main {

@@ -209,7 +209,7 @@ h2 {
 
 /* #region Media Queries */
 
-@media (min-width: 37.5em) {
+@media (width > 600px) {
 
     main {
         margin: calc(var(--default-margin) + 5%);
