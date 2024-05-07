@@ -19,7 +19,7 @@ De website is gemaakt aan de hand van de bestaande huisstijl van Redpers met zel
 
 In deze sprint lag de focus op het het verbeteren van de performance door het toepassen van verschillende aangeboden principes. 
 
-### [Live Link 🔗]([https://easy-ruby-chiton-cap.cyclic.app/](https://weak-lime-hatchling-cape.cyclic.app/)
+### [Live Link 🔗](https://easy-ruby-chiton-cap.cyclic.app/](https://weak-lime-hatchling-cape.cyclic.app/)
 
 > Preview Voorpagina
 <img width="1512" alt="Screenshot 2024-03-13 at 17 37 56" src="https://github.com/Jason2426/the-web-is-for-everyone-interactive-functionality/assets/143999883/c91285a0-3cef-4eb8-b90d-107f1c32deaa">
