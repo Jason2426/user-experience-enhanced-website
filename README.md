@@ -17,7 +17,7 @@ Voorpagina en Detailpagina van artikel
 
 De website is gemaakt aan de hand van de bestaande huisstijl van Redpers met zelf toegevoegde twists en tweaks. Op de pagina voorpagina kun je de laatst gepubliceerde artikelen zien en als je er op klikt lezen op mobiel, tablet of laptop.
 
-In deze sprint lag de focus op het het verbeteren van de performance door het toepassen van verschillende aangeboden principes. 
+In deze sprint lag de focus op het het verbeteren van de performance door het toepassen van verschillende aangeboden principes. Lees in mijn [documentatie](https://github.com/Jason2426/user-experience-enhanced-website/wiki) hoe ik de performance van de site heb geprobeerd te optimaliseren.  
 
 ### [Live Link 🔗](https://weak-lime-hatchling-cape.cyclic.app/)
 
